@@ -27,7 +27,7 @@ services:
     container_name: auth-service
     ports:
       - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
-    enviroment:
+    environment:
       - DB_HOST: ${AUTH_DB_HOST}
       - DB_PORT: ${AUTH_DB_PORT}
       - DB_USER: ${AUTH_DB_USER}
