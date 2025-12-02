@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
 
   # ===========================
@@ -26,7 +24,7 @@ services:
     build: ../auth-service
     container_name: auth-service
     ports:
-      - "${AUTH_SERVICE_PORT}:${AUTH_SERVICE_PORT}"
+      - "${AUTH_SERVICE_PORT}"
     environment:
       - DB_HOST: ${AUTH_DB_HOST}
       - DB_PORT: ${AUTH_DB_PORT}
@@ -57,7 +55,7 @@ services:
     build: ../user-service
     container_name: user-service
     ports:
-      - "${USER_SERVICE_PORT}:${USER_SERVICE_PORT}"
+      - "${USER_SERVICE_PORT}"
     environment:
       - DB_HOST: ${USER_DB_HOST}
       - DB_PORT: ${USER_DB_PORT}
@@ -88,7 +86,7 @@ services:
     build: ../chat-service
     container_name: chat-service
     ports:
-      - "${CHAT_SERVICE_PORT}:${CHAT_SERVICE_PORT}"
+      - "${CHAT_SERVICE_PORT}"
     environment:
       - DB_HOST: ${CHAT_DB_HOST}
       - DB_PORT: ${CHAT_DB_PORT}
@@ -119,7 +117,7 @@ services:
     build: ../game-service
     container_name: game-service
     ports:
-      - "${GAME_SERVICE_PORT}:${GAME_SERVICE_PORT}"
+      - "${GAME_SERVICE_PORT}"
     environment:
       - DB_HOST: ${GAME_DB_HOST}
       - DB_PORT: ${GAME_DB_PORT}
@@ -150,7 +148,7 @@ services:
     build: ../rt-gateway
     container_name: rt-gateway
     ports:
-      - "${RT_GATEWAY_PORT}:${RT_GATEWAY_PORT}"
+      - "${RT_GATEWAY_PORT}"
     env_file:
       - .env
 
@@ -161,7 +159,7 @@ services:
     image: redis:7
     container_name: redis
     ports:
-      - "${REDIS_PORT}:${REDIS_PORT}"
+      - "${REDIS_PORT}"
     volumes:
       - redis-data:/data
 
