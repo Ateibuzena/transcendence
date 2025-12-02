@@ -166,7 +166,7 @@
 
     Integrar logs estructurados y Prometheus desde el día 0.
 
-## MVP de 6 contenedores:
+## MVP de 6 contenedores: 1 mes y 15 días
 
     API Gateway
 
@@ -180,8 +180,7 @@
 
     Game + db
 
-
-## Milestone 2:
+## Milestone 2: 15 días
 
     Logs (ES + Kibana)
 
@@ -189,15 +188,13 @@
 
     IA básica
 
-## Milestone 3:
+## Milestone 3: 15 días
 
     Tournament service
 
-    Jaeger
-
     Prometheus + Grafana
 
-## Milestone Final (si queréis luciros):
+## Milestone Final (si queréis luciros): 15 días
 
     Kafka
 
