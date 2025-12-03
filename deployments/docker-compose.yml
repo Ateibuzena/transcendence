@@ -13,7 +13,6 @@ services:
       - user-service
       - chat-service
       - game-service
-      - rt-gateway
     env_file:
       - .env
 
@@ -140,17 +139,6 @@ services:
       - "5454:5432"
     volumes:
       - game-db-volume:/var/lib/postgresql/data
-
-  # ===========================
-  # REAL-TIME GATEWAY
-  # ===========================
-  rt-gateway:
-    build: ../rt-gateway
-    container_name: rt-gateway
-    ports:
-      - "${RT_GATEWAY_PORT}"
-    env_file:
-      - .env
 
   # ===========================
   # REDIS

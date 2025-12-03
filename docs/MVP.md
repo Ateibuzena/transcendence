@@ -19,12 +19,6 @@
 │   ├── requirements.txt / package.json
 │   └── config/
 │
-├── rt-gateway/            # WebSocket Gateway
-│   ├── src/
-│   ├── tests/
-│   ├── Dockerfile
-│   └── config/
-│
 ├── chat-service/
 │   ├── src/
 │   ├── tests/
