@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",            // versión JS de salida
+    "module": "commonjs",          // Node usa CommonJS
+    "rootDir": "src",              // carpeta con tu código TS
+    "outDir": "dist",              // donde se genera JS
+    "strict": true,                // chequeos estrictos de TS
+    "esModuleInterop": true,       // permite import de módulos comunes
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"]
+}

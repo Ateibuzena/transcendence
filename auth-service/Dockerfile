@@ -8,6 +8,8 @@ RUN npm install
 
 COPY . .
 
+RUN npm run build   # compila TS -> dist/
+
 EXPOSE ${AUTH_SERVICE_PORT}
 
 CMD ["node", "dist/main.js"]
