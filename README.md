@@ -174,8 +174,6 @@
 
     User + db
 
-    RT Gateway (WS)
-
     Chat + db
 
     Game + db
@@ -190,16 +188,124 @@
 
 ## Milestone 3: 15 días
 
-    Tournament service
+    Tournament service (REST)
 
-    Prometheus + Grafana
+    Redis para:
+
+        sesiones
+
+        rate limiting sencillo
+
+        cache de posiciones del juego
+
+    REST o colas Redis (simple)
 
 ## Milestone Final (si queréis luciros): 15 días
-
-    Kafka
 
     Blockchain
 
     OPA + RBAC
 
     Vault
+
+    Vault para gestión de secretos
+
+    RBAC / OPA para autorización avanzada
+
+    Hardening del API Gateway
+
+    Tokens cortos + refresh tokens
+
+        Prometheus + Grafana
+
+    ELK stack (ElasticSearch + Logstash + Kibana)
+
+    metrics-service
+
+    log-service
+
+# ✅ Versión Mejorada y Final de la Hoja de Ruta
+
+## 🎯 MVP — 1 mes y 15 días
+**Objetivo:** el producto funciona, se puede jugar, logear, chatear y registrarse.  
+**Límite:** 6 contenedores máximo.
+
+### ✔ Servicios:
+- API Gateway  
+- Auth + DB  
+- User + DB  
+- Chat + DB  
+- Game + DB (con WebSockets)
+
+### ✔ Entregable:
+- Login con 42  
+- Gestión de usuarios  
+- Chat funcional (REST o SSE)  
+- Juego Pong con WebSockets integrados  
+- Docker Compose funcionando  
+- README y scripts de inicio  
+- Frontend con flujo completo  
+
+👉 **Esto es un MVP de verdad:** usable, claro y sin sobrearquitecturas.  
+
+---
+
+## 🟣 Milestone 2 — 15 días
+**Objetivo:** reforzar arquitectura y preparar escalabilidad ligera.
+
+### ✔ Infraestructura:
+- PostgreSQL multi-db (o multischema si queréis simplificar)  
+- ElasticSearch + Kibana (logs básicos)  
+- *No necesitas Logstash todavía.*  
+- IA básica (para modo entrenamiento o para tests)
+
+### ✔ Entregable:
+- Logs consultables  
+- DB organizada para multi-servicios  
+- Primer motor de IA (básico)
+
+👉 Aquí el proyecto ya empieza a parecer “serio”.
+
+---
+
+## 🟡 Milestone 3 — 15 días
+**Objetivo:** nuevas features + performance real-time realista.
+
+### ✔ Servicios:
+- Tournament service (REST)  
+- Redis para:  
+  - sesiones rápidas  
+  - rate-limiting  
+  - cache de estado del game (frame positions, latencies, etc.)
+
+### ✔ Comunicación:
+- REST o Redis Pub/Sub (simple y suficiente)
+
+👉 Aquí **Redis realmente multiplica el rendimiento** del servicio `game`.  
+Sin complicar con Kafka ni colas externas. Es la solución ideal para 42.
+
+---
+
+## 🔴 Milestone Final (Showcase) — 15 días
+**Objetivo:** todo lo que impresiona, pero que no necesitas para que funcione el juego.
+
+### ✔ Seguridad & Autorización:
+- Vault (gestión de secretos)  
+- OPA + RBAC avanzado  
+- Hardening API Gateway  
+- Tokens cortos + refresh tokens
+
+### ✔ Observabilidad:
+- Prometheus + Grafana (métricas)  
+- ELK completo:  
+  - ElasticSearch  
+  - Logstash  
+  - Kibana  
+- metrics-service  
+- log-service  
+
+### ✔ Extra opcional (si queréis fliparlo):
+- Blockchain (para registrar partidas o rankings)
+
+👉 Este milestone es para presentar el proyecto como *“producción like”*,  
+no para el gameplay. Pero es lo que hace que vuestro **transcendence destaque de verdad**.
