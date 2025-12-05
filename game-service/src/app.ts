@@ -2,16 +2,11 @@
 import Fastify, { FastifyInstance } from 'fastify';
 import cors from '@fastify/cors';
 import jwt from '@fastify/jwt';
+import postgresPlugin from './plugins/postgres.plugin';
 import fastifySocketIO from 'fastify-socket.io';
 import { serverConfig } from './config/server.config';
 import { setupSocketHandlers } from './socket/socket.handler';
 import { registerRoutes } from './api/routes';
-import type { 
-  ServerToClientEvents, 
-  ClientToServerEvents, 
-  InterServerEvents, 
-  SocketData 
-} from './types/socket.types';
 
 export async function buildApp(): Promise<FastifyInstance> {
   const app = Fastify({
@@ -34,6 +29,9 @@ export async function buildApp(): Promise<FastifyInstance> {
     secret: serverConfig.jwt.secret
   });
 
+  await app.register(postgresPlugin);
+
+
   // Socket.IO con tipado
   await app.register(fastifySocketIO, {
     cors: serverConfig.socketio.cors,
@@ -53,7 +51,7 @@ export async function buildApp(): Promise<FastifyInstance> {
     if (err) throw err;
 
     // Configurar handlers de Socket.IO
-    setupSocketHandlers(app.io);
+    setupSocketHandlers((app as any).io);
 
     app.log.info('Socket.IO configurado correctamente');
   });

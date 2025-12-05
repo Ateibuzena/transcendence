@@ -9,18 +9,18 @@ export const serverConfig = {
   nodeEnv: process.env.NODE_ENV || 'development',
   
   jwt: {
-    secret: process.env.JWT_SECRET || 'change-me-in-production',
+    secret: process.env.JWT_SECRET || 'super-secret',
     expiresIn: '7d'
   },
   
   cors: {
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+    origin: process.env.CORS_ORIGIN || '*',
     credentials: true
   },
   
   socketio: {
     cors: {
-      origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
+      origin: process.env.CORS_ORIGIN || '*',
       credentials: true
     },
     transports: ['websocket', 'polling']

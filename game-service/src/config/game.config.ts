@@ -1,5 +1,6 @@
-// src/config/game.config.ts
-export const gameConfig = {
+import type { PongGameConfig } from "../types/pong-game.types";
+
+export const gameConfig : PongGameConfig = {
   canvas: {
     width: 800,
     height: 600
@@ -31,6 +32,6 @@ export const gameConfig = {
     countdownSeconds: 3,
     reconnectTimeout: 30000
   }
-} as const;
+};
 
 export type GameConfig = typeof gameConfig;

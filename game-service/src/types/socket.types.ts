@@ -31,7 +31,7 @@ export interface SocketData {
   matchId?: string;
 }
 
-export type TypedSocket = Socket
+export type TypedSocket = Socket<
   ClientToServerEvents,
   ServerToClientEvents,
   InterServerEvents,
