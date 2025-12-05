@@ -35,7 +35,7 @@
 │   ├── auth-db/
 │   │   ├── init.sql
 │   │   └── Dockerfile (opcional si usáis imagen oficial)
-│   ├── user-db/
+│   ├── user_db/
 │   ├── chat-db/
 │   └── game-db/
 │

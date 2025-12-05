@@ -1,29 +1,11 @@
-cd ../deployments
+docker compose down -v
 
-docker stop $(docker ps -aq)
+docker compose up --build user-service user_db
 
-docker rm -f $(docker ps -aq)
+curl -i http://localhost:5002/users 
 
-docker rmi -f $(docker images -aq)
+docker ps --format "table {{.Names}}\t{{.Status}}"
 
-docker volume rm $(docker volume ls -q)
+docker exec -it user-service sh
 
-docker network rm $(docker network ls -q)
-
-docker system prune -a --volumes -f
-
-docker builder prune -a -f
-
-docker compose down --rmi all --volumes --remove-orphans
-
-docker system df
-docker system prune --all --force --volumes
-
-docker compose up --build -d
-
-docker logs user-service
-
-docker logs user-db
-
-curl -X POST http://localhost:5002/users   -H "Content-Type: application/json"   -d '{"username":"ana", "email":"ana@42.com"}'
-
+docker exec -it user_db sh
