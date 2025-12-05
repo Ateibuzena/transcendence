@@ -54,14 +54,14 @@ services:
     build: ../user-service
     container_name: user-service
     ports:
-      - "5002:5002"
+      - "${USER_SERVICE_PORT}:${USER_SERVICE_PORT}"
     environment:
       # usar mismas vars que espera el código / .env
-      USER_DB_HOST: user_db
-      USER_DB_PORT: 5432
-      USER_DB_USER: user_user
-      USER_DB_PASS: user_pass
-      USER_DB_NAME: user_db
+      USER_DB_HOST: ${USER_DB_HOST}
+      USER_DB_PORT: ${USER_DB_PORT}
+      USER_DB_USER: ${USER_DB_USER}
+      USER_DB_PASS: ${USER_DB_PASS}
+      USER_DB_NAME: ${USER_DB_NAME}
     depends_on:
       - user_db
     networks:
@@ -73,20 +73,18 @@ services:
   # USER DB (con init.sql)
   # ===========================
   user_db:
-    build:
-      context: ../databases/user-db
-      dockerfile: Dockerfile
+    image: postgres:15-alpine
     container_name: user_db
     ports:
-      - "5452:5432"
+      - "${USER_DB_PORT}:5432"
     environment:
-      - POSTGRES_USER=user_user
-      - POSTGRES_PASSWORD=user_pass
-      - POSTGRES_DB=user_db
+      - POSTGRES_USER=${USER_DB_USER}
+      - POSTGRES_PASSWORD=${USER_DB_PASS}
+      - POSTGRES_DB=${USER_DB_NAME}
     networks:
       - default
     volumes:
-      - user_db-volume:/var/lib/postgresql/data
+      - ../databases/user-db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
 
   # ===========================
   # CHAT SERVICE
@@ -167,7 +165,6 @@ networks:
 
 volumes:
   auth-db-volume:
-  user_db-volume:
   chat-db-volume:
   game-db-volume:
   redis-data:
